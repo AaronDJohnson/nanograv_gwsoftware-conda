@@ -1,5 +1,5 @@
-{% set name = "enterprise_extensions" %}
-{% set version = "2.0" %}
+{% set name = "nanograv_gwsoftware" %}
+{% set version = "1.0" %}
 
 package:
     name: "{{ name|lower }}"
@@ -12,7 +12,7 @@ source:
 
 build:
     noarch: python
-    number: 9
+    number: 0
     script: {{ PYTHON }} -m pip install . -vv
 
 
@@ -46,4 +46,7 @@ requirements:
         - emcee
         - ptmcmcsampler
         - numdifftools
+        - libblas=*=*mkl
+        - jupyterlab
+        - nb_conda
 
