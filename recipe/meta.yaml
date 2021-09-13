@@ -1,0 +1,49 @@
+{% set name = "enterprise_extensions" %}
+{% set version = "2.0" %}
+
+package:
+    name: "{{ name|lower }}"
+    version: "{{ version }}"
+
+source:
+    git_url: https://github.com/nanograv/enterprise_extensions.git
+    # git_rev:
+    git_depth: 1
+
+build:
+    noarch: python
+    number: 9
+    script: {{ PYTHON }} -m pip install . -vv
+
+
+test:
+    import:
+        - enterprise_extensions
+# test:
+#     source_files:
+#         - tests/
+#     commands:
+#         # run tests for enterprise_ext here:
+#         # or we could make a test.sh script
+
+requirements:
+    host:
+        - python >=3.6
+        - pip
+        - numpy >=1.16.3
+        - scipy >=1.2.0
+        - pytest
+
+    run:
+        - numpy >=1.16.3
+        - scipy >=1.2.0
+        - ephem >=3.7.6.0
+        - healpy >=1.14.0
+        - scikit-sparse >=0.4.5
+        - pint-pulsar >=0.8.2
+        - libstempo >=2.4.0
+        - enterprise-pulsar >=3.1.0
+        - emcee
+        - ptmcmcsampler
+        - numdifftools
+
